@@ -1,0 +1,11 @@
+{%- if parameter=="GetHeading" -%}
+    {% if post.heading %}{{ post.heading | escape }}{% else %}{{ post.title | escape }}{% endif %}
+
+{%- elsif parameter=="TopIcon" -%}
+    <!-- 66A3FF -->
+    <img src="https://img.shields.io/badge/-置顶-FF6666.svg" alt="Top Icon" title="sticky post" style="width:1.26em">
+
+{%- elsif parameter=="test" -%}
+    <p>"test"</p>
+
+{%- endif -%}

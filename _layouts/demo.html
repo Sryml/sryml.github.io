@@ -1,0 +1,10 @@
+---
+layout: default
+---
+<div class="page clearfix" demo>
+    <div class="left">
+        <h1>{% if page.heading %}{{ page.heading | escape }}{% else %}{{ page.title | escape }}{% endif %}</h1>
+        <hr>
+        {{content}}
+    </div>
+</div>

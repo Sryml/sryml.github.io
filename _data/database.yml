@@ -1,0 +1,8 @@
+# 首页置顶文章
+TopPost:
+  - vscode 插件 markdown-schedule-snippet
+  - 开始：使用jekyll搭建的博客
+
+# 类别中置顶的文章
+SubTopPost:
+  - My First Post

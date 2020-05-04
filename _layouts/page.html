@@ -1,0 +1,48 @@
+---
+layout: default
+---
+
+{% if page.type=="post_custom" %}
+<style>
+    .post_bgimg {
+        width: 100%;
+        height: 100%;
+        /* background-image: linear-gradient(to top,rgba(255, 255, 255, 0.5),rgba(255, 255, 255, 0.5)), url("https://raw.githubusercontent.com/Sryml/Image/master/res/wallpaper_31.jpg"); */
+        background-size: 100%;
+        background-image: linear-gradient(0deg, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.5) 2%, rgba(255, 255, 255, 0.5) 98%,rgba(255, 255, 255, 0.6)), url("https://raw.githubusercontent.com/Sryml/Image/master/res/wallpaper_31.jpg");
+        /* background-repeat:repeat-y; */
+        /* position: absolute; */
+        background-position: center;
+        /* background-repeat:no-repeat; */
+        position: fixed;
+        top:0;
+        z-index: -100;
+    }
+</style>
+<div class="post_bgimg"></div>
+{% endif %}
+<div class="page clearfix" post>
+    <div class="left">
+        <h1>{% if page.heading %}{{ page.heading | escape }}{% else %}{{ page.title | escape }}{% endif %}</h1>
+        <hr>
+        {{content}}
+    </div>
+    <button class="anchor"><i class="fa fa-anchor"></i></button>
+    <div class="right">
+        <div class="wrap">
+
+            <!-- Content -->
+            <div class="side content">
+                <div>
+                    Content
+                </div>
+                <ul id="content-side" class="content-ul">
+                </ul>
+            </div>
+            <!-- 其他div框放到这里 -->
+            <!-- <div class="side">bbbb</div> -->
+        </div>
+    </div>
+</div>
+
+<script src="{{ '/js/pageContent.js ' | prepend: site.baseurl }}" charset="utf-8"></script>

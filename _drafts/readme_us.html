@@ -1,0 +1,557 @@
+<!DOCTYPE html><html><head>
+      <title>readme_us</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/katex.min.css">
+      
+      
+
+      
+      
+      
+      
+      
+      
+
+      <style>
+      /**
+ * prism.js Github theme based on GitHub's theme.
+ * @author Sam Clarke
+ */
+code[class*="language-"],
+pre[class*="language-"] {
+  color: #333;
+  background: none;
+  font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  line-height: 1.4;
+
+  -moz-tab-size: 8;
+  -o-tab-size: 8;
+  tab-size: 8;
+
+  -webkit-hyphens: none;
+  -moz-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none;
+}
+
+/* Code blocks */
+pre[class*="language-"] {
+  padding: .8em;
+  overflow: auto;
+  /* border: 1px solid #ddd; */
+  border-radius: 3px;
+  /* background: #fff; */
+  background: #f5f5f5;
+}
+
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+  padding: .1em;
+  border-radius: .3em;
+  white-space: normal;
+  background: #f5f5f5;
+}
+
+.token.comment,
+.token.blockquote {
+  color: #969896;
+}
+
+.token.cdata {
+  color: #183691;
+}
+
+.token.doctype,
+.token.punctuation,
+.token.variable,
+.token.macro.property {
+  color: #333;
+}
+
+.token.operator,
+.token.important,
+.token.keyword,
+.token.rule,
+.token.builtin {
+  color: #a71d5d;
+}
+
+.token.string,
+.token.url,
+.token.regex,
+.token.attr-value {
+  color: #183691;
+}
+
+.token.property,
+.token.number,
+.token.boolean,
+.token.entity,
+.token.atrule,
+.token.constant,
+.token.symbol,
+.token.command,
+.token.code {
+  color: #0086b3;
+}
+
+.token.tag,
+.token.selector,
+.token.prolog {
+  color: #63a35c;
+}
+
+.token.function,
+.token.namespace,
+.token.pseudo-element,
+.token.class,
+.token.class-name,
+.token.pseudo-class,
+.token.id,
+.token.url-reference .token.variable,
+.token.attr-name {
+  color: #795da3;
+}
+
+.token.entity {
+  cursor: help;
+}
+
+.token.title,
+.token.title .token.punctuation {
+  font-weight: bold;
+  color: #1d3e81;
+}
+
+.token.list {
+  color: #ed6a43;
+}
+
+.token.inserted {
+  background-color: #eaffea;
+  color: #55a532;
+}
+
+.token.deleted {
+  background-color: #ffecec;
+  color: #bd2c00;
+}
+
+.token.bold {
+  font-weight: bold;
+}
+
+.token.italic {
+  font-style: italic;
+}
+
+
+/* JSON */
+.language-json .token.property {
+  color: #183691;
+}
+
+.language-markup .token.tag .token.punctuation {
+  color: #333;
+}
+
+/* CSS */
+code.language-css,
+.language-css .token.function {
+  color: #0086b3;
+}
+
+/* YAML */
+.language-yaml .token.atrule {
+  color: #63a35c;
+}
+
+code.language-yaml {
+  color: #183691;
+}
+
+/* Ruby */
+.language-ruby .token.function {
+  color: #333;
+}
+
+/* Markdown */
+.language-markdown .token.url {
+  color: #795da3;
+}
+
+/* Makefile */
+.language-makefile .token.symbol {
+  color: #795da3;
+}
+
+.language-makefile .token.variable {
+  color: #183691;
+}
+
+.language-makefile .token.builtin {
+  color: #0086b3;
+}
+
+/* Bash */
+.language-bash .token.keyword {
+  color: #0086b3;
+}
+
+/* highlight */
+pre[data-line] {
+  position: relative;
+  padding: 1em 0 1em 3em;
+}
+pre[data-line] .line-highlight-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: transparent;
+  display: block;
+  width: 100%;
+}
+
+pre[data-line] .line-highlight {
+  position: absolute;
+  left: 0;
+  right: 0;
+  padding: inherit 0;
+  margin-top: 1em;
+  background: hsla(24, 20%, 50%,.08);
+  background: linear-gradient(to right, hsla(24, 20%, 50%,.1) 70%, hsla(24, 20%, 50%,0));
+  pointer-events: none;
+  line-height: inherit;
+  white-space: pre;
+}
+
+pre[data-line] .line-highlight:before, 
+pre[data-line] .line-highlight[data-end]:after {
+  content: attr(data-start);
+  position: absolute;
+  top: .4em;
+  left: .6em;
+  min-width: 1em;
+  padding: 0 .5em;
+  background-color: hsla(24, 20%, 50%,.4);
+  color: hsl(24, 20%, 95%);
+  font: bold 65%/1.5 sans-serif;
+  text-align: center;
+  vertical-align: .3em;
+  border-radius: 999px;
+  text-shadow: none;
+  box-shadow: 0 1px white;
+}
+
+pre[data-line] .line-highlight[data-end]:after {
+  content: attr(data-end);
+  top: auto;
+  bottom: .4em;
+}html body{font-family:"Helvetica Neue",Helvetica,"Segoe UI",Arial,freesans,sans-serif;font-size:16px;line-height:1.6;color:#333;background-color:#fff;overflow:initial;box-sizing:border-box;word-wrap:break-word}html body>:first-child{margin-top:0}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{line-height:1.2;margin-top:1em;margin-bottom:16px;color:#000}html body h1{font-size:2.25em;font-weight:300;padding-bottom:.3em}html body h2{font-size:1.75em;font-weight:400;padding-bottom:.3em}html body h3{font-size:1.5em;font-weight:500}html body h4{font-size:1.25em;font-weight:600}html body h5{font-size:1.1em;font-weight:600}html body h6{font-size:1em;font-weight:600}html body h1,html body h2,html body h3,html body h4,html body h5{font-weight:600}html body h5{font-size:1em}html body h6{color:#5c5c5c}html body strong{color:#000}html body del{color:#5c5c5c}html body a:not([href]){color:inherit;text-decoration:none}html body a{color:#08c;text-decoration:none}html body a:hover{color:#00a3f5;text-decoration:none}html body img{max-width:100%}html body>p{margin-top:0;margin-bottom:16px;word-wrap:break-word}html body>ul,html body>ol{margin-bottom:16px}html body ul,html body ol{padding-left:2em}html body ul.no-list,html body ol.no-list{padding:0;list-style-type:none}html body ul ul,html body ul ol,html body ol ol,html body ol ul{margin-top:0;margin-bottom:0}html body li{margin-bottom:0}html body li.task-list-item{list-style:none}html body li>p{margin-top:0;margin-bottom:0}html body .task-list-item-checkbox{margin:0 .2em .25em -1.8em;vertical-align:middle}html body .task-list-item-checkbox:hover{cursor:pointer}html body blockquote{margin:16px 0;font-size:inherit;padding:0 15px;color:#5c5c5c;border-left:4px solid #d6d6d6}html body blockquote>:first-child{margin-top:0}html body blockquote>:last-child{margin-bottom:0}html body hr{height:4px;margin:32px 0;background-color:#d6d6d6;border:0 none}html body table{margin:10px 0 15px 0;border-collapse:collapse;border-spacing:0;display:block;width:100%;overflow:auto;word-break:normal;word-break:keep-all}html body table th{font-weight:bold;color:#000}html body table td,html body table th{border:1px solid #d6d6d6;padding:6px 13px}html body dl{padding:0}html body dl dt{padding:0;margin-top:16px;font-size:1em;font-style:italic;font-weight:bold}html body dl dd{padding:0 16px;margin-bottom:16px}html body code{font-family:Menlo,Monaco,Consolas,'Courier New',monospace;font-size:.85em !important;color:#000;background-color:#f0f0f0;border-radius:3px;padding:.2em 0}html body code::before,html body code::after{letter-spacing:-0.2em;content:"\00a0"}html body pre>code{padding:0;margin:0;font-size:.85em !important;word-break:normal;white-space:pre;background:transparent;border:0}html body .highlight{margin-bottom:16px}html body .highlight pre,html body pre{padding:1em;overflow:auto;font-size:.85em !important;line-height:1.45;border:#d6d6d6;border-radius:3px}html body .highlight pre{margin-bottom:0;word-break:normal}html body pre code,html body pre tt{display:inline;max-width:initial;padding:0;margin:0;overflow:initial;line-height:inherit;word-wrap:normal;background-color:transparent;border:0}html body pre code:before,html body pre tt:before,html body pre code:after,html body pre tt:after{content:normal}html body p,html body blockquote,html body ul,html body ol,html body dl,html body pre{margin-top:0;margin-bottom:16px}html body kbd{color:#000;border:1px solid #d6d6d6;border-bottom:2px solid #c7c7c7;padding:2px 4px;background-color:#f0f0f0;border-radius:3px}@media print{html body{background-color:#fff}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{color:#000;page-break-after:avoid}html body blockquote{color:#5c5c5c}html body pre{page-break-inside:avoid}html body table{display:table}html body img{display:block;max-width:100%;max-height:100%}html body pre,html body code{word-wrap:break-word;white-space:pre}}.markdown-preview{width:100%;height:100%;box-sizing:border-box}.markdown-preview .pagebreak,.markdown-preview .newpage{page-break-before:always}.markdown-preview pre.line-numbers{position:relative;padding-left:3.8em;counter-reset:linenumber}.markdown-preview pre.line-numbers>code{position:relative}.markdown-preview pre.line-numbers .line-numbers-rows{position:absolute;pointer-events:none;top:1em;font-size:100%;left:0;width:3em;letter-spacing:-1px;border-right:1px solid #999;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.markdown-preview pre.line-numbers .line-numbers-rows>span{pointer-events:none;display:block;counter-increment:linenumber}.markdown-preview pre.line-numbers .line-numbers-rows>span:before{content:counter(linenumber);color:#999;display:block;padding-right:.8em;text-align:right}.markdown-preview .mathjax-exps .MathJax_Display{text-align:center !important}.markdown-preview:not([for="preview"]) .code-chunk .btn-group{display:none}.markdown-preview:not([for="preview"]) .code-chunk .status{display:none}.markdown-preview:not([for="preview"]) .code-chunk .output-div{margin-bottom:16px}.scrollbar-style::-webkit-scrollbar{width:8px}.scrollbar-style::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}.scrollbar-style::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,0.66);border:4px solid rgba(150,150,150,0.66);background-clip:content-box}html body[for="html-export"]:not([data-presentation-mode]){position:relative;width:100%;height:100%;top:0;left:0;margin:0;padding:0;overflow:auto}html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{position:relative;top:0}@media screen and (min-width:914px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{padding:2em calc(50% - 457px + 2em)}}@media screen and (max-width:914px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{font-size:14px !important;padding:1em}}@media print{html body[for="html-export"]:not([data-presentation-mode]) #sidebar-toc-btn{display:none}}html body[for="html-export"]:not([data-presentation-mode]) #sidebar-toc-btn{position:fixed;bottom:8px;left:8px;font-size:28px;cursor:pointer;color:inherit;z-index:99;width:32px;text-align:center;opacity:.4}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] #sidebar-toc-btn{opacity:1}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc{position:fixed;top:0;left:0;width:300px;height:100%;padding:32px 0 48px 0;font-size:14px;box-shadow:0 0 4px rgba(150,150,150,0.33);box-sizing:border-box;overflow:auto;background-color:inherit}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar{width:8px}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,0.66);border:4px solid rgba(150,150,150,0.66);background-clip:content-box}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc a{text-decoration:none}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc ul{padding:0 1.6em;margin-top:.8em}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc li{margin-bottom:.8em}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc ul{list-style-type:none}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{left:300px;width:calc(100% -  300px);padding:2em calc(50% - 457px -  150px);margin:0;box-sizing:border-box}@media screen and (max-width:1274px){html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{width:100%}}html body[for="html-export"]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .markdown-preview{left:50%;transform:translateX(-50%)}html body[for="html-export"]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .md-sidebar-toc{display:none}
+/* Please visit the URL below for more information: */
+/*   https://shd101wyy.github.io/markdown-preview-enhanced/#/customize-css */
+.markdown-preview.markdown-preview * {
+  color: #3e3e3e;
+}
+.markdown-preview.markdown-preview p {
+  letter-spacing: 1px !important;
+  line-height: 1.7 !important;
+  min-height: 1em !important;
+  box-sizing: border-box !important;
+  word-wrap: break-word !important;
+  text-align: justify;
+  margin: 20px 0 !important;
+}
+.markdown-preview.markdown-preview blockquote {
+  border-left: 10px solid rgba(128, 128, 128, 0.075);
+  background-color: rgba(128, 128, 128, 0.05);
+  padding: 13px 15px !important;
+  margin: 0px;
+}
+.markdown-preview.markdown-preview blockquote p {
+  color: #898989;
+  margin: 0px;
+}
+.markdown-preview.markdown-preview strong {
+  font-weight: normal;
+  color: #FD5B03;
+}
+.markdown-preview.markdown-preview body {
+  font-size: 15px;
+}
+.markdown-preview.markdown-preview pre {
+  background-color: #f8f8f8;
+  border-radius: 3px;
+  word-wrap: break-word;
+  padding: 12px 13px;
+  font-size: 13px;
+  color: #898989;
+}
+.markdown-preview.markdown-preview h1,
+.markdown-preview.markdown-preview h2,
+.markdown-preview.markdown-preview h3,
+.markdown-preview.markdown-preview h4,
+.markdown-preview.markdown-preview h5,
+.markdown-preview.markdown-preview h6 {
+  word-break: break-all !important;
+  margin: 20px 0;
+  line-height: 1.2;
+  text-align: left;
+  font-weight: bold;
+  padding-left: 15px;
+}
+.markdown-preview.markdown-preview h1 {
+  border-left: 6px solid #71BA51 !important;
+  font-size: 20px !important;
+}
+.markdown-preview.markdown-preview h2 {
+  border-left: 4px solid #71BA51 !important;
+  font-size: 18px !important;
+}
+.markdown-preview.markdown-preview h3 {
+  border-left: 4px solid #71BA51 !important;
+}
+.markdown-preview.markdown-preview a {
+  color: #4183C4 !important;
+  text-decoration: none !important;
+}
+.markdown-preview.markdown-preview ul,
+.markdown-preview.markdown-preview ol {
+  padding-left: 30px;
+}
+.markdown-preview.markdown-preview li {
+  line-height: 24px;
+}
+.markdown-preview.markdown-preview hr {
+  height: 4px;
+  padding: 0;
+  margin: 16px 0;
+  background-color: #e7e7e7;
+  border: 0 none;
+  overflow: hidden;
+  box-sizing: content-box;
+  border-bottom: 1px solid #ddd;
+}
+.markdown-preview.markdown-preview pre {
+  background: #f2f2f2 !important;
+  padding: 12px 13px;
+}
+.markdown-preview.markdown-preview code {
+  color: #a71d5d;
+}
+
+      </style>
+    </head>
+    <body for="html-export">
+      <div class="mume markdown-preview  ">
+      <p></p>
+<h2 class="mume-header" id="installation">Installation</h2>
+
+<ol>
+<li>
+<p>Unzip and overlay into main directory of game.</p>
+</li>
+<li>
+<p>Run the quick start program<code>Blade - QuickLaunch.bat</code>, recommended option 2(OpenGL) is the best compatibility.</p>
+</li>
+<li>
+<p>Win10 settings see footnote<sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup></p>
+</li>
+</ol>
+<p>You can set the resolution yourself, and then enter the game by quickly launching <code>Blade - QuickLaunch</code>.<br>
+Recommended windowed play, the best effect on the windowed, and the color of the recording and screenshot are normal.<br>
+The OpenGL windowed can be maximized by pressing the key combination <code>Win+&#x2191;</code>.</p>
+<p>p.s. If you enter the game from the start menu, it is recommended to rename the intro video file first. Otherwise, the screen will be misplaced in <strong>dg_D3d</strong> mode.<br>
+File path<code>..\Data\video\EnglishUS\main.mpg</code>, or search for a video file name<code>main.mpg</code><br>
+e.g. I changed it to<code>main_bak.mpg</code></p>
+<h2 class="mume-header" id="description">Description</h2>
+
+<p>BoD&apos;s optimized configuration, a collection of multiple graphics renderers, all configurations have been provisioned with default values, and an accelerated one-click start game.</p>
+<p>&quot;D3d+dgVoodoo&quot; works very well on my PC(win7), hardware information:</p>
+<blockquote>
+<p>Windows 7 x64 sp1<br>
+i5-2320 3.00GHz<br>
+16G RAM<br>
+AMD Radeon HD 7850</p>
+</blockquote>
+<ul>
+<li>
+<p><strong>About dgVoodoo</strong><br>
+dgVoodoo 2.55.4 Graphics API Wrapper by Dege<br>
+<a href="http://dege.fw.hu/">http://dege.fw.hu/</a></p>
+</li>
+<li>
+<p><strong>Blade - QuickLaunch v1.1</strong><br>
+<img src="https://raw.githubusercontent.com/Sryml/Image/master/Blade%20-%20QuickLaunch.png" alt="Blade - QuickLaunch"></p>
+<br>
+<p>In win7 or higher, there is a game manager that comes with the system. Press the Win button and there is a game option in the sidebar of the Start menu.</p>
+<p><img src="https://raw.githubusercontent.com/Sryml/Image/master/%E6%88%AA%E5%9B%BE20190709222427.png" alt="game manager"></p>
+<p>It will automatically collect the game information you played. When you run a game, the system will run <code>rundll32.exe</code> to call a library <code>gameux.dll</code>, which is the case in many old games.<br>
+This library will update the game information online. When there is no network or no game information, it will block all the time and the game will not start. This is a bug in the win7 system, I have never used this game manager.<br>
+Since win xp does not have the file gameux.dll, this has never happened before.</p>
+<p>I found three solutions:</p>
+<ol>
+<li>
+<p>I have provided a batch script <code>Blade-QuickLaunch.bat</code>, which runs &quot;.exe&quot; twice. When the second &quot;.exe&quot; window appears, the script will automatically close the first Blade.exe and rundll32.exe.<br>
+This is a very effective method, and I added an option to quickly launch the console.<br>
+I have perfected the script and updated it to 1.1.</p>
+</li>
+<li>
+<p>Rename the gameux.dll file so that it cannot be loaded.<br>
+At <code>C:\Windows\SysWOW64\gameux.dll</code><br>
+change into<br>
+<code>gameux.dll.bak</code></p>
+</li>
+<li>
+<p>Modify the registry at <code>HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\GameUX\</code><br>
+There is an item like <code>S-1-5-21-284290709...</code> which contains some custom game information.<br>
+Just change the data of a key <code>ConfigInstallType</code> to <code>4</code> and the game manager will no longer check and update the game.<br>
+Multiple game versions need to modify the key ConfigInstallType in all items.</p>
+<blockquote>
+<p>@echo off</p>
+<p>set r=HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\GameUX<br>
+for /f &quot;tokens=2&quot; %%i in (&apos;whoami /user ^| find /i &quot;%username%&quot;&apos;) do set &quot;SID=%%i&quot;</p>
+<p>for /f %%i in (&apos;reg query %r%%SID%&apos;) do reg add %%i /v ConfigInstallType /t REG_SZ /d 4 /f</p>
+<p>pause</p>
+</blockquote>
+<p>Copy the code to a text document and save it as <code>DisableUpdate.bat</code>. Running it will automatically disable the update information feature for all current games.<br>
+One defect is that if you add a copy of the game, its ConfigInstallType value defaults to 3, and you need to re-run DisableUpdate.bat once.</p>
+</li>
+</ol>
+<p>These three methods work well now.</p>
+</li>
+<li>
+<p><strong>Graphics renderers</strong></p>
+<ul>
+<li>
+<p>D3d + <em>dgVoodoo</em><br>
+<em>version: from usa patch 1.01</em></p>
+<ul>
+<li>Only some machines can use it normally</li>
+<li>The effect is perfect, anti-aliasing, anisotropic filtering, excellent foggy environment, bright colors and fast loading speed</li>
+<li>Defect: Light particles will reduce the number of frames<code>&quot;Entity Spot&quot;.Visible</code></li>
+</ul>
+</li>
+<li>
+<p>OpenGL<br>
+<em>version: Alpha 2</em></p>
+<ul>
+<li>Best compatibility</li>
+<li>The graphics quality is not as good as dg_D3d, the foggy environment is poor</li>
+<li>To enable MipMapping, you need to set the Filter Mode to an option with <code>MIPMAP</code>, but the screen may be a bit slow.</li>
+<li>Defect: Light particle texture&apos;s alpha transparency is invalid<code>&quot;Entity Spot&quot;.GlowTexture</code></li>
+</ul>
+</li>
+<li>
+<p>r3Dfx Voodoo 1-2 + <em>dgVoodoo</em><br>
+<em>version: from usa patch 1.01</em></p>
+<ul>
+<li>The graphics quality is poor, the effect of water is very poor, especially in the Island of Karum<code>Island_M8</code>, the fog and water are very uncoordinated.</li>
+<li>If you want to change the resolution you need to set it in <code>dgVoodooCpl.exe</code></li>
+<li>Defect: Textures larger than 256x256 are not supported<br>
+<br></li>
+</ul>
+</li>
+</ul>
+<p><code>p.s. dgVoodoo is not compatible with ENBSeries</code></p>
+</li>
+</ul>
+<h2 class="mume-header" id="update-log">Update log</h2>
+
+<ul>
+<li>
+<p>2019-05-30</p>
+<ul>
+<li>According to the method provided by <strong>sgi1981</strong>, I changed the fog value of OpenGL to 0.007 (Although the effect does not change much. <a href="http://www.arokhslair.net/forum/viewtopic.php?f=11&amp;t=3760&amp;start=15#p31358">sgi version</a> is 0.004)</li>
+<li>Because <code>r3Dfx Voodoo 1-2.dll</code> file name with spaces cannot be used in Quick Launch, so I change it to <code>r3Dfx_Voodoo_1_2.dll</code></li>
+</ul>
+</li>
+<li>
+<p>2018-12-05</p>
+<ul>
+<li>Optimize the light source of the <code>dg_D3d</code> mode, only the light source particles such as the torch oil lamp will be turned off.</li>
+</ul>
+</li>
+<li>
+<p>2018-05-14</p>
+<ul>
+<li>Using <code>dg_D3d</code> will cause the screen to be slow in multiple light sources because of the visible particles of light, so I added a function in the script file <code>Globals.py</code> to turn off visible particles, each time entering a new game or loading the function will be executed automatically.</li>
+</ul>
+</li>
+</ul>
+<hr>
+<ul>
+<li>
+<p>dgVoodoo2_55</p>
+<ul>
+<li>Fluid lava display is normal</li>
+<li>F2 screenshot is normal</li>
+</ul>
+</li>
+<li>
+<p>dgVoodoo2_54</p>
+<ul>
+<li>Supports 8x anti-aliasing</li>
+<li>Support 16x anisotropic filtering</li>
+<li>Force Vertical sync</li>
+<li>Adjustable game brightness/saturation/contrast</li>
+<li>Fluid lava cannot be displayed</li>
+<li>F2 cannot be screenshot</li>
+</ul>
+</li>
+</ul>
+<h2 class="mume-header" id="cautions">Cautions</h2>
+
+<ul>
+<li>If you encounter a slow moving view, try to save game and then load it</li>
+<li>The gamma configuration may cause a full screen game white screen, in which case you only need to delete this file <code>../Config/Gamma.cfg</code></li>
+<li>Recording and screenshot are darker when the game is full screen.</li>
+</ul>
+<hr>
+<h2 class="mume-header" id="dg_d3d-and-opengl-graphics-quality-comparison">dg_D3d and OpenGL graphics quality comparison</h2>
+
+<p><strong>Windowed resolution 1600x900</strong></p>
+<ul>
+<li>
+<p>Left: <code>dg_D3d | 8x Anti-aliasing</code>&#x2003;&#x2003;Right: <code>OpenGL</code></p>
+<p><a href="https://raw.githubusercontent.com/Sryml/Image/master/OpenGL%26dg_D3d%20%5B01%5D.jpg">[img1]</a><br>
+<a href="https://raw.githubusercontent.com/Sryml/Image/master/OpenGL%26dg_D3d%20%5B02%5D.jpg">[img2]</a><br>
+<a href="https://raw.githubusercontent.com/Sryml/Image/master/OpenGL%26dg_D3d%20%5B03%5D.jpg">[img3]</a><br>
+<a href="https://raw.githubusercontent.com/Sryml/Image/master/OpenGL%26dg_D3d%20%5B04%5D.jpg">[img4]</a><br>
+<a href="https://raw.githubusercontent.com/Sryml/Image/master/OpenGL%26dg_D3d%20%5B05%5D.jpg">[img5]</a><br>
+<a href="https://raw.githubusercontent.com/Sryml/Image/master/OpenGL%26dg_D3d%20%5B06%5D.jpg">[img6]</a><br>
+<a href="https://raw.githubusercontent.com/Sryml/Image/master/OpenGL%26dg_D3d%20%5B07%5D.jpg">[img7]</a></p>
+</li>
+<li>
+<p>Left: <code>dg_D3d | 8x anti-aliasing | 16x Anisotropic filtering</code>&#x2003;&#x2003;Right: <code>OpenGL</code><br>
+<a href="https://raw.githubusercontent.com/Sryml/Image/master/OpenGL%26dg_D3d%20%5B08%5D.jpg">[img8]</a></p>
+</li>
+</ul>
+<hr class="footnotes-sep">
+<section class="footnotes">
+<ol class="footnotes-list">
+<li id="fn1" class="footnote-item"><p><code>Win10 settings as shown</code><img src="https://raw.githubusercontent.com/Sryml/Image/master/win10-Legacy%20Components.jpg" alt=" "> <a href="#fnref1" class="footnote-backref">&#x21A9;&#xFE0E;</a></p>
+</li>
+</ol>
+</section>
+
+      </div>
+      
+      
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    </body></html>
