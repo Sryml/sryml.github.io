@@ -1,0 +1,812 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title>Blade Virtual Module and Development Environment</title>
+    <url>//BVM/</url>
+    <content><![CDATA[<img alt="" src="https://sryml.github.io/images/BVM/BVM_banner.png" width="800" />
+<br/>
+<p>I hope this document can assist newcomers in quickly configuring a development environment and help experienced developers improve their work efficiency.</p>
+<h2 id="initial-preparation"><a class="markdownIt-Anchor" href="#initial-preparation"></a> Initial Preparation</h2>
+<ol>
+<li>
+<p>Install the Visual Studio Code (VSCode) editor.<br />
+You can download it here: <a href="https://code.visualstudio.com/Download">https://code.visualstudio.com/Download</a></p>
+<ul>
+<li>Run VSCode and click on the “Extensions” in the sidebar (shortcut <kbd>Ctrl + Shift + X</kbd>).</li>
+<li>You can search and install the language pack you need (e.g. Chinese/Russian).</li>
+<li>Then, install the <code>Python</code> and <code>Pylance</code> extensions.</li>
+</ul>
+</li>
+<li>
+<p>Install Python (version &gt;= 3.8).<br />
+You can download it here: <a href="https://www.python.org/downloads/windows/">https://www.python.org/downloads/windows/</a></p>
+<ul>
+<li>After installation, open a command prompt (press <kbd>Win + R</kbd>, then run <code>cmd</code>).</li>
+<li>Install the <code>Bladex</code> package using the following command:<pre class="line-numbers language-batch" data-language="batch"><code class="language-batch"><span class="token command"><span class="token keyword">pip</span> install Bladex</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<em>pip is a Python package management tool, built into Python 3.4 and later versions.</em></li>
+</ul>
+</li>
+</ol>
+<br/>
+<div class="note info"><p>After completing these steps, you’ll soon be able to enjoy Bladex’s code autocompletion and type hints 🎉</p>
+</div>
+<h2 id="getting-started"><a class="markdownIt-Anchor" href="#getting-started"></a> 🚀 Getting Started</h2>
+<span id="more"></span>
+<ol>
+<li>Drag the game’s root directory into the VSCode window, which means adding the folder to the workspace and will be referred to as the project’s root directory in the following steps.</li>
+<li>Right-click on the project’s root directory and create a folder named <code>.vscode</code>.</li>
+<li>Inside the <code>.vscode</code> folder, create a file named <code>settings.json</code> (<em>the file’s path should be</em> <code>Blade of Darkness/.vscode/settings.json</code>).</li>
+<li>The content of the settings.json file is as follows:</li>
+</ol>
+<!-- <pre class="line-numbers language-json" data-language="json"><div class="caption"><span>settings.json</span><a href="/downloads/code/settings.json">view raw</a></div><code class="language-json"><span class="token punctuation">{</span>
+    <span class="token property">"python.analysis.typeCheckingMode"</span><span class="token operator">:</span> <span class="token string">"basic"</span><span class="token punctuation">,</span>
+    <span class="token property">"python.analysis.diagnosticSeverityOverrides"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">"reportShadowedImports"</span><span class="token operator">:</span> <span class="token string">"none"</span><span class="token punctuation">,</span>
+        <span class="token property">"reportUnboundVariable"</span><span class="token operator">:</span> <span class="token string">"none"</span><span class="token punctuation">,</span>
+        <span class="token property">"reportOptionalMemberAccess"</span><span class="token operator">:</span> <span class="token string">"none"</span><span class="token punctuation">,</span>
+        <span class="token property">"reportUnusedExpression"</span><span class="token operator">:</span> <span class="token string">"none"</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token property">"python.autoComplete.extraPaths"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+        <span class="token string">"${workspaceFolder}/Scripts"</span><span class="token punctuation">,</span>
+        <span class="token string">"${workspaceFolder}/Scripts/Biped"</span><span class="token punctuation">,</span>
+        <span class="token string">"${workspaceFolder}/Scripts/Combos"</span><span class="token punctuation">,</span>
+        <span class="token string">"${workspaceFolder}/Lib"</span><span class="token punctuation">,</span>
+        <span class="token string">"${workspaceFolder}/Lib/AnmSets"</span><span class="token punctuation">,</span>
+        <span class="token string">"${workspaceFolder}/Lib/Widgets"</span><span class="token punctuation">,</span>
+        <span class="token string">"${workspaceFolder}/Lib/PythonLib"</span><span class="token punctuation">,</span>
+        <span class="token string">"${workspaceFolder}/Lib/PythonLib/lib-tk"</span><span class="token punctuation">,</span>
+        <span class="token string">"${workspaceFolder}/Lib/PythonLib/DLLs"</span><span class="token punctuation">,</span>
+        <span class="token string">"~/AppData/Local/Programs/Python/Python39/Lib/site-packages/Bladex/__ext__"</span>
+    <span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token property">"python.analysis.extraPaths"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+        <span class="token string">"${workspaceFolder}/Scripts"</span><span class="token punctuation">,</span>
+        <span class="token string">"${workspaceFolder}/Scripts/Biped"</span><span class="token punctuation">,</span>
+        <span class="token string">"${workspaceFolder}/Scripts/Combos"</span><span class="token punctuation">,</span>
+        <span class="token string">"${workspaceFolder}/Lib"</span><span class="token punctuation">,</span>
+        <span class="token string">"${workspaceFolder}/Lib/AnmSets"</span><span class="token punctuation">,</span>
+        <span class="token string">"${workspaceFolder}/Lib/Widgets"</span><span class="token punctuation">,</span>
+        <span class="token string">"${workspaceFolder}/Lib/PythonLib"</span><span class="token punctuation">,</span>
+        <span class="token string">"${workspaceFolder}/Lib/PythonLib/lib-tk"</span><span class="token punctuation">,</span>
+        <span class="token string">"${workspaceFolder}/Lib/PythonLib/DLLs"</span><span class="token punctuation">,</span>
+        <span class="token string">"~/AppData/Local/Programs/Python/Python39/Lib/site-packages/Bladex/__ext__"</span>
+    <span class="token punctuation">]</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre> -->
+<pre class="line-numbers language-json" data-language="json"><code class="language-json"><span class="token punctuation">&#123;</span>
+  <span class="token comment">// "python.analysis.ignore": ["*"],</span>
+
+  <span class="token comment">// Enable type checking</span>
+  <span class="token property">"python.analysis.typeCheckingMode"</span><span class="token operator">:</span> <span class="token string">"basic"</span><span class="token punctuation">,</span>
+  <span class="token comment">// Ignore certain error prompts</span>
+  <span class="token property">"python.analysis.diagnosticSeverityOverrides"</span><span class="token operator">:</span> <span class="token punctuation">&#123;</span>
+    <span class="token property">"reportShadowedImports"</span><span class="token operator">:</span> <span class="token string">"none"</span><span class="token punctuation">,</span>
+    <span class="token property">"reportUnboundVariable"</span><span class="token operator">:</span> <span class="token string">"none"</span><span class="token punctuation">,</span>
+    <span class="token property">"reportOptionalMemberAccess"</span><span class="token operator">:</span> <span class="token string">"none"</span><span class="token punctuation">,</span>
+    <span class="token property">"reportUnusedExpression"</span><span class="token operator">:</span> <span class="token string">"none"</span>
+  <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+  <span class="token comment">// Additional module analysis paths</span>
+  <span class="token property">"python.autoComplete.extraPaths"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+    <span class="token string">"$&#123;workspaceFolder&#125;/Scripts"</span><span class="token punctuation">,</span>
+    <span class="token string">"$&#123;workspaceFolder&#125;/Scripts/Biped"</span><span class="token punctuation">,</span>
+    <span class="token string">"$&#123;workspaceFolder&#125;/Scripts/Combos"</span><span class="token punctuation">,</span>
+    <span class="token string">"$&#123;workspaceFolder&#125;/Lib"</span><span class="token punctuation">,</span>
+    <span class="token string">"$&#123;workspaceFolder&#125;/Lib/AnmSets"</span><span class="token punctuation">,</span>
+    <span class="token string">"$&#123;workspaceFolder&#125;/Lib/Widgets"</span><span class="token punctuation">,</span>
+    <span class="token string">"$&#123;workspaceFolder&#125;/Lib/PythonLib"</span><span class="token punctuation">,</span>
+    <span class="token string">"$&#123;workspaceFolder&#125;/Lib/PythonLib/lib-tk"</span><span class="token punctuation">,</span>
+    <span class="token string">"$&#123;workspaceFolder&#125;/Lib/PythonLib/DLLs"</span><span class="token punctuation">,</span>
+    <span class="token string">"~/AppData/Local/Programs/Python/Python39/Lib/site-packages/Bladex/__ext__"</span>
+  <span class="token punctuation">]</span><span class="token punctuation">,</span>
+  <span class="token property">"python.analysis.extraPaths"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+    <span class="token string">"$&#123;workspaceFolder&#125;/Scripts"</span><span class="token punctuation">,</span>
+    <span class="token string">"$&#123;workspaceFolder&#125;/Scripts/Biped"</span><span class="token punctuation">,</span>
+    <span class="token string">"$&#123;workspaceFolder&#125;/Scripts/Combos"</span><span class="token punctuation">,</span>
+    <span class="token string">"$&#123;workspaceFolder&#125;/Lib"</span><span class="token punctuation">,</span>
+    <span class="token string">"$&#123;workspaceFolder&#125;/Lib/AnmSets"</span><span class="token punctuation">,</span>
+    <span class="token string">"$&#123;workspaceFolder&#125;/Lib/Widgets"</span><span class="token punctuation">,</span>
+    <span class="token string">"$&#123;workspaceFolder&#125;/Lib/PythonLib"</span><span class="token punctuation">,</span>
+    <span class="token string">"$&#123;workspaceFolder&#125;/Lib/PythonLib/lib-tk"</span><span class="token punctuation">,</span>
+    <span class="token string">"$&#123;workspaceFolder&#125;/Lib/PythonLib/DLLs"</span><span class="token punctuation">,</span>
+    <span class="token string">"~/AppData/Local/Programs/Python/Python39/Lib/site-packages/Bladex/__ext__"</span>
+  <span class="token punctuation">]</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<br/>
+<ul>
+<li><code>~/AppData/Local/Programs/Python/Python39</code> is the installation path for “Python 3.9.x”. If you have a different version installed, you need to adjust the path.<br />
+Simply modify the <code>Python39</code> part, for example, py3.10 version is Python310, and py3.11 is Python311.</li>
+</ul>
+<br/>
+<div class="note success"><p>At this point, you can enjoy code autocompletion for almost all modules!</p>
+</div>
+<h3 id="configuring-projects-in-arbitrary-paths"><a class="markdownIt-Anchor" href="#configuring-projects-in-arbitrary-paths"></a> Configuring Projects in Arbitrary Paths</h3>
+<p>If your project is not located in the game directory (e.g. <code>D:/MyProject</code>) and is added to the workspace as a project folder,<br />
+simply copy the file <code>Blade of Darkness/.vscode/settings.json</code> to <code>D:/MyProject/.vscode/settings.json</code>.<br />
+Then, modify <code>$&#123;workspaceFolder&#125;</code> to the absolute path of the game’s root directory.</p>
+<h2 id="example-images"><a class="markdownIt-Anchor" href="#example-images"></a> 🧩 Example Images</h2>
+<img alt="" src="https://github.com/Sryml/blade-virtual-module/blob/main/demo1.gif?raw=true" width="800" />
+<div class="group-picture"><div class="group-picture-row"><div class="group-picture-column"><img src="https://sryml.github.io/images/BVM/Snipaste_2023-10-21_22-10-37.png" alt="" /></div><div class="group-picture-column"><img src="https://sryml.github.io/images/BVM/Snipaste_2023-10-21_23-10-08.png" alt="" /></div><div class="group-picture-column"><img src="https://sryml.github.io/images/BVM/Snipaste_2023-10-21_23-11-22.png" alt="" /></div></div></div>
+<br/>
+<h2 id="further-enhancing-the-coding-experience"><a class="markdownIt-Anchor" href="#further-enhancing-the-coding-experience"></a> 💖 Further Enhancing the Coding Experience</h2>
+<h3 id="ignoring-error-prompts"><a class="markdownIt-Anchor" href="#ignoring-error-prompts"></a> Ignoring Error Prompts</h3>
+<p>Due to the use of Python version 1.5.2 in BoD, some outdated syntax is considered a syntax error by the IDE, such as the <code>print</code> keyword.</p>
+<p>You can add a line to <code>settings.json</code> to ignore errors in all files. If you are using the settings provided in this document, simply uncomment it at the beginning of the file.</p>
+<pre class="line-numbers language-json" data-language="json"><code class="language-json"><span class="token property">"python.analysis.ignore"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">"*"</span><span class="token punctuation">]</span><span class="token punctuation">,</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<div class="note warning"><p>But this also means that the IDE won’t warn you about issues like mismatched arguments.</p>
+</div>
+<p><strong>Another way is to add an end-of-line comment <code># type: ignore</code>.</strong></p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">print</span> <span class="token string">"1"</span> <span class="token comment"># type: ignore</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>This will only affect a single line, or you can place the comment at the beginning of the file to ignore the entire file.</p>
+<h3 id="formatting-your-code"><a class="markdownIt-Anchor" href="#formatting-your-code"></a> Formatting Your Code</h3>
+<p>A formatter can enhance the readability of your code, making it easier for future reading and modifications.</p>
+<p>I use the <code>Black</code> and <code>autopep8</code> Python code formatters.<br />
+You can search and install the Black extension from the VSCode extension marketplace.</p>
+<p>After installation, right-click in the editing window to configure the code formatter,<br />
+and then use the shortcut “Shift + Alt + F” to format the code.</p>
+<p>However, Black cannot format documents with syntax errors.<br />
+For example, if the document uses the <code>print &quot;1&quot;</code> keyword instead of the <code>print(&quot;1&quot;)</code> function, it cannot be processed by the formatter.</p>
+<p>Autopep8 can handle documents with syntax errors, but the VSCode Autopep8 extension cannot handle documents with syntax errors.</p>
+<p><strong>The solution is to use the command-line version of Autopep8. Here is how to configure a VSCode task to format documents with Autopep8:</strong></p>
+<ol>
+<li>
+<p>Install autopep8 on the command line.</p>
+<pre class="line-numbers language-batch" data-language="batch"><code class="language-batch"><span class="token command"><span class="token keyword">pip</span> install autopep8</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+</li>
+<li>
+<p>In the project’s root directory, create a file named <code>.vscode/tasks.json</code> with the following content:</p>
+</li>
+</ol>
+<pre class="line-numbers language-json" data-language="json"><div class="caption"><span>tasks.json</span><a href="/downloads/code/tasks.json">view raw</a></div><code class="language-json"><span class="token punctuation">{</span>
+  <span class="token property">"version"</span><span class="token operator">:</span> <span class="token string">"2.0.0"</span><span class="token punctuation">,</span>
+  <span class="token property">"tasks"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+    <span class="token punctuation">{</span>
+      <span class="token property">"label"</span><span class="token operator">:</span> <span class="token string">"Run autopep8 for Blade"</span><span class="token punctuation">,</span>
+      <span class="token property">"type"</span><span class="token operator">:</span> <span class="token string">"shell"</span><span class="token punctuation">,</span>
+      <span class="token property">"command"</span><span class="token operator">:</span> <span class="token string">"autopep8"</span><span class="token punctuation">,</span>
+      <span class="token property">"args"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">"${file}"</span><span class="token punctuation">,</span> <span class="token string">"-i"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+      <span class="token property">"group"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">"kind"</span><span class="token operator">:</span> <span class="token string">"build"</span><span class="token punctuation">,</span>
+        <span class="token property">"isDefault"</span><span class="token operator">:</span> <span class="token boolean">true</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      <span class="token property">"problemMatcher"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">]</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<div class="note success"><p>Done! Press <kbd>F1</kbd> to open the command palette, type <code>tasks</code>, and then click on <code>Tasks: Run Task</code>.<br />
+Select the <code>Run autopep8 for Blade</code> task to format the Python files.</p>
+</div>
+<p>This is equivalent to running <code>autopep8 file.py -i</code> from the command line.</p>
+<hr/>
+<p><strong>If you want specific code to be exempt from formatting, you can use special annotations.</strong><br />
+Use “fmt: off” and “fmt: on”</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment"># fmt: off</span>
+<span class="token comment"># The code here won't be automatically formatted.</span>
+<span class="token comment"># You can freely write and arrange the code, and the formatting tool will ignore this part.</span>
+var<span class="token operator">=</span><span class="token number">1</span>
+<span class="token comment"># fmt: on</span>
+<span class="token comment"># The code here will be formatted again.</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="why-is-type-hinting-not-working"><a class="markdownIt-Anchor" href="#why-is-type-hinting-not-working"></a> 💡 Why is Type Hinting Not Working?</h2>
+<img style="margin-left: 0;" alt="" src="https://sryml.github.io/images/BVM/Snipaste_2023-10-25_18-15-41.png" height="150" />
+<p>In the image, “inv” is an unknown variable, and the IDE cannot provide suggestions for its attributes and methods.<br />
+This is because the variable “ent_name” lacks a type annotation. Similarly, “o” is also an unknown variable, and the IDE cannot offer accurate hints.</p>
+<p>To inform the IDE that “ent_name” is a string, you can use the following syntax:</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">foo</span><span class="token punctuation">(</span>ent_name<span class="token punctuation">:</span> <span class="token builtin">str</span><span class="token punctuation">)</span><span class="token punctuation">:</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>But this is valid syntax in Python 3.x and newer versions; it will result in syntax errors in older versions.</p>
+<p>The solution is to use special comments, which should be placed at the beginning of the function body:</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">foo</span><span class="token punctuation">(</span>ent_name<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token comment"># type: (str) -> ...</span>
+    o <span class="token operator">=</span> Bladex<span class="token punctuation">.</span>GetEntity<span class="token punctuation">(</span>ent_name<span class="token punctuation">)</span>
+    inv <span class="token operator">=</span> o<span class="token punctuation">.</span>GetInventory<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p>Now the IDE can prompt the type normally.</p>
+<img style="margin-left: 0;" alt="" src="https://sryml.github.io/images/BVM/Snipaste_2023-10-25_18-10-50.png" height="150" />
+<p>Older versions of the Python interpreter will treat these as regular comments, but the IDE can analyze them.</p>
+<p>PS: Maintaining good coding practices helps reduce errors and improve code quality.</p>
+<h2 id="vscode-shortcuts"><a class="markdownIt-Anchor" href="#vscode-shortcuts"></a> VSCode Shortcuts</h2>
+<p>These shortcuts can help developers quickly reference function definitions or available values.</p>
+<ul>
+<li>
+<p>Trigger suggestions: <kbd>Ctrl + Space</kbd><br />
+If there are keyboard input method shortcut conflicts, you can change the shortcut for the input method.<br />
+<img style="margin-left: 0;" alt="" src="https://sryml.github.io/images/BVM/Snipaste_2023-10-21_22-10-37.png" height="200" /></p>
+</li>
+<li>
+<p>Trigger parameter hints: <kbd>Ctrl + Shift + Space</kbd><br />
+<img style="margin-left: 0;" alt="" src="https://sryml.github.io/images/BVM/Snipaste_2023-10-22_23-40-42.png" height="200" /></p>
+</li>
+<li>
+<p>Peek definition: <kbd>Alt + F12</kbd><br />
+Quickly browse other properties of an object.<br />
+<img style="margin-left: 0;" alt="" src="https://sryml.github.io/images/BVM/Snipaste_2023-10-21_23-10-08.png" height="200" /></p>
+</li>
+<li>
+<p>Go to definition: <kbd>F12</kbd></p>
+</li>
+</ul>
+<hr>
+<iframe style="width: 560px; height: 315px;" src="https://www.youtube.com/embed/5u369j6WiQE?si=Lw3ODi6t4kvywEXc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+<h2 id="links"><a class="markdownIt-Anchor" href="#links"></a> 🔗 Links</h2>
+<div class="link-grid"><div class="link-grid-container">
+<object class="link-grid-image" data="/images/github.svg"></object>
+<p>Blade Virtual Module</p><p>Github Source code</p>
+<a href="https://github.com/Sryml/blade-virtual-module"></a>
+</div><div class="link-grid-container">
+<object class="link-grid-image" data="/images/steam.svg"></object>
+<p>Blade Virtual Module & DEV ENV</p><p>Steam (This article is also published on this website)</p>
+<a href="https://steamcommunity.com/sharedfiles/filedetails/?id=3058700530"></a>
+</div><div class="link-grid-container">
+<object class="link-grid-image" data="https://media.moddb.com/images/global/moddb.png"></object>
+<p>Blade Virtual Module & DEV ENV</p><p>ModDB (This article is also published on this website)</p>
+<a href="https://www.moddb.com/games/severance-blade-of-darkness/tutorials/bvm"></a>
+</div></div>
+]]></content>
+      <categories>
+        <category>🇺🇸 English</category>
+        <category>Blade</category>
+        <category>Game MOD</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>Blade虚模块和开发环境</title>
+    <url>/zh-CN/BVM/</url>
+    <content><![CDATA[<img alt="" src="https://sryml.github.io/images/BVM/BVM_banner.png" width="800" />
+<br/>
+<p>我希望此文档可帮助无改装经验者快速配置开发环境，或帮助有经验的开发者提高工作效率。</p>
+<h2 id="初始准备"><a class="markdownIt-Anchor" href="#初始准备"></a> 初始准备</h2>
+<ol>
+<li>安装 Visual Studio Code（VSCode） 编辑器<br />
+下载：<a href="https://code.visualstudio.com/Download">https://code.visualstudio.com/Download</a>
+<ul>
+<li>运行 VSCode，点击侧边栏的扩展（快捷键<kbd>Ctrl + Shift + X</kbd>）<br />
+你可以搜索并安装你需要的语言包（例如 Chinese/Russian）<br />
+然后安装<code>Python</code>和<code>Pylance</code>扩展</li>
+</ul>
+</li>
+<li>安装 Python（版本&gt;=3.8）<br />
+下载：<a href="https://www.python.org/downloads/windows/">https://www.python.org/downloads/windows/</a>
+<ul>
+<li>安装完毕后打开命令行窗口（按 <kbd>Win + R</kbd> 后运行<code>cmd</code>）<br />
+然后在命令行中安装<code>Bladex</code>包<pre class="line-numbers language-batch" data-language="batch"><code class="language-batch"><span class="token command"><span class="token keyword">pip</span> install Bladex</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<em>pip 是 Python 包管理工具，内置于 Python3.4 及之后版本</em></li>
+</ul>
+</li>
+</ol>
+<br/>
+<div class="note info"><p>做完这些，很快就可以享受 Bladex 的代码自动补全和类型提示了 🎉</p>
+</div>
+<h2 id="快速开始"><a class="markdownIt-Anchor" href="#快速开始"></a> 🚀 快速开始</h2>
+<span id="more"></span>
+<ol>
+<li>将游戏根目录拖动到 VSCode 窗口，意思是将文件夹添加到工作区，后续称为项目根目录。</li>
+<li>右键项目根目录并新建文件夹，名称为<code>.vscode</code></li>
+<li>在.vscode 中创建文件<code>settings.json</code>（<em>此时文件的路径应该是</em><code>Blade of Darkness/.vscode/settings.json</code>）</li>
+<li>settings.json 文件内容如下：</li>
+</ol>
+<!-- <pre class="line-numbers language-json" data-language="json"><div class="caption"><span>settings.json</span><a href="/downloads/code/settings.json">view raw</a></div><code class="language-json"><span class="token punctuation">{</span>
+    <span class="token property">"python.analysis.typeCheckingMode"</span><span class="token operator">:</span> <span class="token string">"basic"</span><span class="token punctuation">,</span>
+    <span class="token property">"python.analysis.diagnosticSeverityOverrides"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">"reportShadowedImports"</span><span class="token operator">:</span> <span class="token string">"none"</span><span class="token punctuation">,</span>
+        <span class="token property">"reportUnboundVariable"</span><span class="token operator">:</span> <span class="token string">"none"</span><span class="token punctuation">,</span>
+        <span class="token property">"reportOptionalMemberAccess"</span><span class="token operator">:</span> <span class="token string">"none"</span><span class="token punctuation">,</span>
+        <span class="token property">"reportUnusedExpression"</span><span class="token operator">:</span> <span class="token string">"none"</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token property">"python.autoComplete.extraPaths"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+        <span class="token string">"${workspaceFolder}/Scripts"</span><span class="token punctuation">,</span>
+        <span class="token string">"${workspaceFolder}/Scripts/Biped"</span><span class="token punctuation">,</span>
+        <span class="token string">"${workspaceFolder}/Scripts/Combos"</span><span class="token punctuation">,</span>
+        <span class="token string">"${workspaceFolder}/Lib"</span><span class="token punctuation">,</span>
+        <span class="token string">"${workspaceFolder}/Lib/AnmSets"</span><span class="token punctuation">,</span>
+        <span class="token string">"${workspaceFolder}/Lib/Widgets"</span><span class="token punctuation">,</span>
+        <span class="token string">"${workspaceFolder}/Lib/PythonLib"</span><span class="token punctuation">,</span>
+        <span class="token string">"${workspaceFolder}/Lib/PythonLib/lib-tk"</span><span class="token punctuation">,</span>
+        <span class="token string">"${workspaceFolder}/Lib/PythonLib/DLLs"</span><span class="token punctuation">,</span>
+        <span class="token string">"~/AppData/Local/Programs/Python/Python39/Lib/site-packages/Bladex/__ext__"</span>
+    <span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token property">"python.analysis.extraPaths"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+        <span class="token string">"${workspaceFolder}/Scripts"</span><span class="token punctuation">,</span>
+        <span class="token string">"${workspaceFolder}/Scripts/Biped"</span><span class="token punctuation">,</span>
+        <span class="token string">"${workspaceFolder}/Scripts/Combos"</span><span class="token punctuation">,</span>
+        <span class="token string">"${workspaceFolder}/Lib"</span><span class="token punctuation">,</span>
+        <span class="token string">"${workspaceFolder}/Lib/AnmSets"</span><span class="token punctuation">,</span>
+        <span class="token string">"${workspaceFolder}/Lib/Widgets"</span><span class="token punctuation">,</span>
+        <span class="token string">"${workspaceFolder}/Lib/PythonLib"</span><span class="token punctuation">,</span>
+        <span class="token string">"${workspaceFolder}/Lib/PythonLib/lib-tk"</span><span class="token punctuation">,</span>
+        <span class="token string">"${workspaceFolder}/Lib/PythonLib/DLLs"</span><span class="token punctuation">,</span>
+        <span class="token string">"~/AppData/Local/Programs/Python/Python39/Lib/site-packages/Bladex/__ext__"</span>
+    <span class="token punctuation">]</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre> -->
+<pre class="line-numbers language-json" data-language="json"><code class="language-json"><span class="token punctuation">&#123;</span>
+  <span class="token comment">// "python.analysis.ignore": ["*"],</span>
+
+  <span class="token comment">// 启用类型检查</span>
+  <span class="token property">"python.analysis.typeCheckingMode"</span><span class="token operator">:</span> <span class="token string">"basic"</span><span class="token punctuation">,</span>
+  <span class="token comment">// 忽略部分错误提示</span>
+  <span class="token property">"python.analysis.diagnosticSeverityOverrides"</span><span class="token operator">:</span> <span class="token punctuation">&#123;</span>
+    <span class="token property">"reportShadowedImports"</span><span class="token operator">:</span> <span class="token string">"none"</span><span class="token punctuation">,</span>
+    <span class="token property">"reportUnboundVariable"</span><span class="token operator">:</span> <span class="token string">"none"</span><span class="token punctuation">,</span>
+    <span class="token property">"reportOptionalMemberAccess"</span><span class="token operator">:</span> <span class="token string">"none"</span><span class="token punctuation">,</span>
+    <span class="token property">"reportUnusedExpression"</span><span class="token operator">:</span> <span class="token string">"none"</span>
+  <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+  <span class="token comment">// 额外模块分析路径</span>
+  <span class="token property">"python.autoComplete.extraPaths"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+    <span class="token string">"$&#123;workspaceFolder&#125;/Scripts"</span><span class="token punctuation">,</span>
+    <span class="token string">"$&#123;workspaceFolder&#125;/Scripts/Biped"</span><span class="token punctuation">,</span>
+    <span class="token string">"$&#123;workspaceFolder&#125;/Scripts/Combos"</span><span class="token punctuation">,</span>
+    <span class="token string">"$&#123;workspaceFolder&#125;/Lib"</span><span class="token punctuation">,</span>
+    <span class="token string">"$&#123;workspaceFolder&#125;/Lib/AnmSets"</span><span class="token punctuation">,</span>
+    <span class="token string">"$&#123;workspaceFolder&#125;/Lib/Widgets"</span><span class="token punctuation">,</span>
+    <span class="token string">"$&#123;workspaceFolder&#125;/Lib/PythonLib"</span><span class="token punctuation">,</span>
+    <span class="token string">"$&#123;workspaceFolder&#125;/Lib/PythonLib/lib-tk"</span><span class="token punctuation">,</span>
+    <span class="token string">"$&#123;workspaceFolder&#125;/Lib/PythonLib/DLLs"</span><span class="token punctuation">,</span>
+    <span class="token string">"~/AppData/Local/Programs/Python/Python39/Lib/site-packages/Bladex/__ext__"</span>
+  <span class="token punctuation">]</span><span class="token punctuation">,</span>
+  <span class="token property">"python.analysis.extraPaths"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+    <span class="token string">"$&#123;workspaceFolder&#125;/Scripts"</span><span class="token punctuation">,</span>
+    <span class="token string">"$&#123;workspaceFolder&#125;/Scripts/Biped"</span><span class="token punctuation">,</span>
+    <span class="token string">"$&#123;workspaceFolder&#125;/Scripts/Combos"</span><span class="token punctuation">,</span>
+    <span class="token string">"$&#123;workspaceFolder&#125;/Lib"</span><span class="token punctuation">,</span>
+    <span class="token string">"$&#123;workspaceFolder&#125;/Lib/AnmSets"</span><span class="token punctuation">,</span>
+    <span class="token string">"$&#123;workspaceFolder&#125;/Lib/Widgets"</span><span class="token punctuation">,</span>
+    <span class="token string">"$&#123;workspaceFolder&#125;/Lib/PythonLib"</span><span class="token punctuation">,</span>
+    <span class="token string">"$&#123;workspaceFolder&#125;/Lib/PythonLib/lib-tk"</span><span class="token punctuation">,</span>
+    <span class="token string">"$&#123;workspaceFolder&#125;/Lib/PythonLib/DLLs"</span><span class="token punctuation">,</span>
+    <span class="token string">"~/AppData/Local/Programs/Python/Python39/Lib/site-packages/Bladex/__ext__"</span>
+  <span class="token punctuation">]</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<br/>
+<!-- - 若你的游戏目录名不是`Blade of Darkness`，则需修正路径。 -->
+<ul>
+<li><code>~/AppData/Local/Programs/Python/Python39</code>是 Python 3.9.x 的安装路径，如果你安装的是不同版本，则需修正路径。<br />
+只需修改<code>Python39</code>部分，例如 py3.10 版本是 Python310，py3.11 是 Python311</li>
+</ul>
+<br/>
+<div class="note success"><p><strong>至此，你已经可以享受几乎所有模块的代码自动补全功能了！</strong></p>
+</div>
+<h3 id="任意路径的项目如何配置"><a class="markdownIt-Anchor" href="#任意路径的项目如何配置"></a> 任意路径的项目如何配置</h3>
+<p>如果你的项目不是位于游戏目录下（例如<code>D:/MyProject</code>），当它作为项目文件夹添加到工作区时，<br />
+只需复制文件<code>Blade of Darkness/.vscode/settings.json</code>到<code>D:/MyProject/.vscode/settings.json</code>，<br />
+然后将<code>$&#123;workspaceFolder&#125;</code>修改为游戏根目录的绝对路径。</p>
+<h2 id="示例图像"><a class="markdownIt-Anchor" href="#示例图像"></a> 🧩 示例图像</h2>
+<img alt="" src="https://github.com/Sryml/blade-virtual-module/blob/main/demo1.gif?raw=true" width="800" />
+<div class="group-picture"><div class="group-picture-row"><div class="group-picture-column"><img src="https://sryml.github.io/images/BVM/Snipaste_2023-10-21_22-10-37.png" alt="" /></div><div class="group-picture-column"><img src="https://sryml.github.io/images/BVM/Snipaste_2023-10-21_23-10-08.png" alt="" /></div><div class="group-picture-column"><img src="https://sryml.github.io/images/BVM/Snipaste_2023-10-21_23-11-22.png" alt="" /></div></div></div>
+<br/>
+<h2 id="进一步优化编码体验"><a class="markdownIt-Anchor" href="#进一步优化编码体验"></a> 💖 进一步优化编码体验</h2>
+<h3 id="忽略错误提示"><a class="markdownIt-Anchor" href="#忽略错误提示"></a> 忽略错误提示</h3>
+<p>由于 BoD 使用的 Python 版本是 1.5.2，一些落后的语法会被 IDE 认为是语法错误，例如<code>print</code>关键字。<br />
+可以在<code>settings.json</code>中添加一行以忽略所有文件中的错误，如果你使用的是本文档提供的设置内容，只需在文件开头取消对它的注释。</p>
+<pre class="line-numbers language-json" data-language="json"><code class="language-json"><span class="token property">"python.analysis.ignore"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">"*"</span><span class="token punctuation">]</span><span class="token punctuation">,</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<div class="note warning"><p>但同时也失去了 IDE 为你提醒例如参数不匹配等问题</p>
+</div>
+<p><strong>另一种方式是添加行尾注释<code># type: ignore</code></strong></p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">print</span> <span class="token string">"1"</span> <span class="token comment"># type: ignore</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>这只有一行起作用，或者将注释放在文件开头，它将忽略整个文件。</p>
+<h3 id="格式化你的代码"><a class="markdownIt-Anchor" href="#格式化你的代码"></a> 格式化你的代码</h3>
+<p>格式化程序可提升代码的可读性，方便以后的阅读与修改。</p>
+<p>我使用的 py 格式化程序是<code>Black</code>和<code>autopep8</code>。<br />
+在 VSCode 扩展商店搜索并安装 Black 扩展，然后在编辑窗口中右键配置格式化程序，<br />
+最后按快捷键&quot;Shift + Alt + F&quot;进行格式化。</p>
+<p>但是 Black 无法格式化存在语法错误的文档，因此当文档中使用的是<code>print &quot;1&quot;</code>关键字而不是函数<code>print(&quot;1&quot;)</code>的话将无法被格式化程序处理。</p>
+<p>autopep8 可以处理存在语法错误的文档，但 VSCode 的 autopep8 扩展同样无法处理语法错误的文档。<br />
+<strong>解决方案是使用 autopep8 的命令行版本，以下是配置一个 VSCode 任务来一键执行 autopep8 格式化文档：</strong></p>
+<ol>
+<li>
+<p>在命令行安装 autopep8</p>
+<pre class="line-numbers language-batch" data-language="batch"><code class="language-batch"><span class="token command"><span class="token keyword">pip</span> install autopep8</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+</li>
+<li>
+<p>在项目根目录创建文件<code>.vscode/tasks.json</code>，内容如下：</p>
+</li>
+</ol>
+<pre class="line-numbers language-json" data-language="json"><div class="caption"><span>tasks.json</span><a href="/downloads/code/tasks.json">view raw</a></div><code class="language-json"><span class="token punctuation">{</span>
+  <span class="token property">"version"</span><span class="token operator">:</span> <span class="token string">"2.0.0"</span><span class="token punctuation">,</span>
+  <span class="token property">"tasks"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+    <span class="token punctuation">{</span>
+      <span class="token property">"label"</span><span class="token operator">:</span> <span class="token string">"Run autopep8 for Blade"</span><span class="token punctuation">,</span>
+      <span class="token property">"type"</span><span class="token operator">:</span> <span class="token string">"shell"</span><span class="token punctuation">,</span>
+      <span class="token property">"command"</span><span class="token operator">:</span> <span class="token string">"autopep8"</span><span class="token punctuation">,</span>
+      <span class="token property">"args"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">"${file}"</span><span class="token punctuation">,</span> <span class="token string">"-i"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+      <span class="token property">"group"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">"kind"</span><span class="token operator">:</span> <span class="token string">"build"</span><span class="token punctuation">,</span>
+        <span class="token property">"isDefault"</span><span class="token operator">:</span> <span class="token boolean">true</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      <span class="token property">"problemMatcher"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">]</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<!--
+json
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Run autopep8 for Blade",
+      "type": "shell",
+      "command": "autopep8",
+      "args": ["${file}", "-i"],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "problemMatcher": []
+    }
+  ]
+}
+-->
+<div class="note success"><p>完成！按 <kbd>F1</kbd> 显示命令框，输入<code>tasks</code>，然后点击<code>Tasks: Run Task</code>，选择任务<code>Run autopep8 for Blade</code>以格式化 py 文件</p>
+</div>
+<p>这相当于在命令行执行<code>autopep8 file.py -i</code></p>
+<hr/>
+<p><strong>如果你想要部分代码无需格式化，可以使用特殊注解来标记</strong><br />
+用 “fmt: off” 和 “fmt: on”</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment"># fmt: off</span>
+<span class="token comment"># 这里的代码不会被自动格式化</span>
+<span class="token comment"># 你可以自由地编写和排列代码，而格式化工具将忽略这部分</span>
+var<span class="token operator">=</span><span class="token number">1</span>
+<span class="token comment"># fmt: on</span>
+<span class="token comment"># 这里的代码将再次被格式化</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="为什么类型提示不起作用"><a class="markdownIt-Anchor" href="#为什么类型提示不起作用"></a> 💡 为什么类型提示不起作用？</h2>
+<img style="margin-left: 0;" alt="" src="https://sryml.github.io/images/BVM/Snipaste_2023-10-25_18-15-41.png" height="150" />
+<p>图中的 inv 是一个未知变量，IDE 无法提示它的属性及方法。<br />
+这是因为变量&quot;ent_name&quot;没有类型注解，同样的&quot;o&quot;也是一个未知变量，IDE 无法给出正确的提示。</p>
+<p>要告诉 IDE 变量&quot;ent_name&quot;是字符串类型可以使用以下语法：</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">foo</span><span class="token punctuation">(</span>ent_name<span class="token punctuation">:</span> <span class="token builtin">str</span><span class="token punctuation">)</span><span class="token punctuation">:</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>但这是 py3.x 及以上版本中的有效语法，在旧版本中会导致语法错误。</p>
+<p>解决方案是使用特殊注释，该注释需位于函数主体首行：</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">foo</span><span class="token punctuation">(</span>ent_name<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token comment"># type: (str) -> ...</span>
+    o <span class="token operator">=</span> Bladex<span class="token punctuation">.</span>GetEntity<span class="token punctuation">(</span>ent_name<span class="token punctuation">)</span>
+    inv <span class="token operator">=</span> o<span class="token punctuation">.</span>GetInventory<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p>现在 IDE 可以正常提示类型了</p>
+<img style="margin-left: 0;" alt="" src="https://sryml.github.io/images/BVM/Snipaste_2023-10-25_18-10-50.png" height="150" />
+<p>旧版本的 py 解释器只会认为这是普通的注释，但 IDE 可以分析它们。</p>
+<p>PS: 保持良好的编码习惯有助于减少错误并提高代码质量。</p>
+<h2 id="vscode-快捷键"><a class="markdownIt-Anchor" href="#vscode-快捷键"></a> VSCode 快捷键</h2>
+<p>这几个快捷键可帮助开发者快速参考函数定义或可用的值。</p>
+<ul>
+<li>触发建议：<kbd>Ctrl + Space</kbd><br />
+若遇到输入法快捷键冲突，可将输入法的快捷键改成其它的<br />
+<img style="margin-left: 0;" alt="" src="https://sryml.github.io/images/BVM/Snipaste_2023-10-21_22-10-37.png" height="200" /></li>
+<li>触发参数提示：<kbd>Ctrl + Shift + Space</kbd><br />
+<img style="margin-left: 0;" alt="" src="https://sryml.github.io/images/BVM/Snipaste_2023-10-22_23-40-42.png" height="200" /></li>
+<li>速览定义：<kbd>Alt + F12</kbd><br />
+可快速浏览对象的其它属性<br />
+<img style="margin-left: 0;" alt="" src="https://sryml.github.io/images/BVM/Snipaste_2023-10-21_23-10-08.png" height="200" /></li>
+<li>转到定义：<kbd>F12</kbd></li>
+</ul>
+<hr>
+<iframe style="width: 560px; height: 315px;" src="https://www.youtube.com/embed/5u369j6WiQE?si=Lw3ODi6t4kvywEXc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+<h2 id="链接"><a class="markdownIt-Anchor" href="#链接"></a> 🔗 链接</h2>
+<div class="link-grid"><div class="link-grid-container">
+<object class="link-grid-image" data="/images/github.svg"></object>
+<p>Blade Virtual Module</p><p>Github 源代码</p>
+<a href="https://github.com/Sryml/blade-virtual-module"></a>
+</div><div class="link-grid-container">
+<object class="link-grid-image" data="/images/steam.svg"></object>
+<p>Blade Virtual Module & DEV ENV</p><p>Steam (本文章也发表于该网站上)</p>
+<a href="https://steamcommunity.com/sharedfiles/filedetails/?id=3058700530"></a>
+</div><div class="link-grid-container">
+<object class="link-grid-image" data="https://media.moddb.com/images/global/moddb.png"></object>
+<p>Blade Virtual Module & DEV ENV</p><p>ModDB (本文章也发表于该网站上)</p>
+<a href="https://www.moddb.com/games/severance-blade-of-darkness/tutorials/bvm"></a>
+</div></div>
+]]></content>
+      <categories>
+        <category>🇨🇳 简体中文</category>
+        <category>Blade</category>
+        <category>Game MOD</category>
+      </categories>
+  </entry>
+  <entry>
+    <title></title>
+    <url>/prism-vsc-dark-plus.css</url>
+    <content><![CDATA[pre[class*="language-"],
+code[class*="language-"] {
+	color: #d4d4d4;
+	/* font-size: 1em; */
+	font-size: 15px;
+	text-shadow: none;
+	font-family: Menlo, Monaco, Consolas, "Andale Mono", "Ubuntu Mono", "Courier New", monospace;
+	direction: ltr;
+	text-align: left;
+	white-space: pre;
+	word-spacing: normal;
+	word-break: normal;
+	line-height: 1.4;
+	-moz-tab-size: 4;
+	-o-tab-size: 4;
+	tab-size: 4;
+	-webkit-hyphens: none;
+	-moz-hyphens: none;
+	-ms-hyphens: none;
+	hyphens: none;
+}
+
+pre[class*="language-"]::selection,
+code[class*="language-"]::selection,
+pre[class*="language-"] *::selection,
+code[class*="language-"] *::selection {
+	text-shadow: none;
+	background: #264F78;
+}
+
+@media print {
+	pre[class*="language-"],
+	code[class*="language-"] {
+		text-shadow: none;
+	}
+}
+
+pre[class*="language-"] {
+	padding: 1em;
+	margin: .5em 0;
+	overflow: auto;
+	background: #1e1e1e;
+}
+
+:not(pre) > code[class*="language-"] {
+	padding: .1em .3em;
+	border-radius: .3em;
+	color: #db4c69;
+	background: #1e1e1e;
+}
+/*********************************************************
+* Tokens
+*/
+.namespace {
+	opacity: .7;
+}
+
+.token.doctype .token.doctype-tag {
+	color: #569CD6;
+}
+
+.token.doctype .token.name {
+	color: #9cdcfe;
+}
+
+.token.comment,
+.token.prolog {
+	color: #6a9955;
+}
+
+.token.punctuation,
+.language-html .language-css .token.punctuation,
+.language-html .language-javascript .token.punctuation {
+	color: #d4d4d4;
+}
+
+.token.property,
+.token.tag,
+.token.boolean,
+.token.number,
+.token.constant,
+.token.symbol,
+.token.inserted,
+.token.unit {
+	color: #b5cea8;
+}
+
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin,
+.token.deleted {
+	color: #ce9178;
+}
+
+.language-css .token.string.url {
+	text-decoration: underline;
+}
+
+.token.operator,
+.token.entity {
+	color: #d4d4d4;
+}
+
+.token.operator.arrow {
+	color: #569CD6;
+}
+
+.token.atrule {
+	color: #ce9178;
+}
+
+.token.atrule .token.rule {
+	color: #c586c0;
+}
+
+.token.atrule .token.url {
+	color: #9cdcfe;
+}
+
+.token.atrule .token.url .token.function {
+	color: #dcdcaa;
+}
+
+.token.atrule .token.url .token.punctuation {
+	color: #d4d4d4;
+}
+
+.token.keyword {
+	color: #569CD6;
+}
+
+.token.keyword.module,
+.token.keyword.control-flow {
+	color: #c586c0;
+}
+
+.token.function,
+.token.function .token.maybe-class-name {
+	color: #dcdcaa;
+}
+
+.token.regex {
+	color: #d16969;
+}
+
+.token.important {
+	color: #569cd6;
+}
+
+.token.italic {
+	font-style: italic;
+}
+
+.token.constant {
+	color: #9cdcfe;
+}
+
+.token.class-name,
+.token.maybe-class-name {
+	color: #4ec9b0;
+}
+
+.token.console {
+	color: #9cdcfe;
+}
+
+.token.parameter {
+	color: #9cdcfe;
+}
+
+.token.interpolation {
+	color: #9cdcfe;
+}
+
+.token.punctuation.interpolation-punctuation {
+	color: #569cd6;
+}
+
+.token.boolean {
+	color: #569cd6;
+}
+
+.token.property,
+.token.variable,
+.token.imports .token.maybe-class-name,
+.token.exports .token.maybe-class-name {
+	color: #9cdcfe;
+}
+
+.token.selector {
+	color: #d7ba7d;
+}
+
+.token.escape {
+	color: #d7ba7d;
+}
+
+.token.tag {
+	color: #569cd6;
+}
+
+.token.tag .token.punctuation {
+	color: #808080;
+}
+
+.token.cdata {
+	color: #808080;
+}
+
+.token.attr-name {
+	color: #9cdcfe;
+}
+
+.token.attr-value,
+.token.attr-value .token.punctuation {
+	color: #ce9178;
+}
+
+.token.attr-value .token.punctuation.attr-equals {
+	color: #d4d4d4;
+}
+
+.token.entity {
+	color: #569cd6;
+}
+
+.token.namespace {
+	color: #4ec9b0;
+}
+/*********************************************************
+* Language Specific
+*/
+
+pre[class*="language-javascript"],
+code[class*="language-javascript"],
+pre[class*="language-jsx"],
+code[class*="language-jsx"],
+pre[class*="language-typescript"],
+code[class*="language-typescript"],
+pre[class*="language-tsx"],
+code[class*="language-tsx"] {
+	color: #9cdcfe;
+}
+
+pre[class*="language-css"],
+code[class*="language-css"] {
+	color: #ce9178;
+}
+
+pre[class*="language-html"],
+code[class*="language-html"] {
+	color: #d4d4d4;
+}
+
+.language-regex .token.anchor {
+	color: #dcdcaa;
+}
+
+.language-html .token.punctuation {
+	color: #808080;
+}
+/*********************************************************
+* Line highlighting
+*/
+pre[class*="language-"] > code[class*="language-"] {
+	position: relative;
+	z-index: 1;
+}
+
+.line-highlight.line-highlight {
+	background: #f7ebc6;
+	box-shadow: inset 5px 0 0 #f7d87c;
+	z-index: 0;
+}
+]]></content>
+  </entry>
+  <entry>
+    <title>Tags</title>
+    <url>/tags/index.html</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
+    <title></title>
+    <url>/downloads/code/settings.json</url>
+    <content><![CDATA[{"python.analysis.typeCheckingMode":"basic","python.analysis.diagnosticSeverityOverrides":{"reportShadowedImports":"none","reportUnboundVariable":"none","reportOptionalMemberAccess":"none","reportUnusedExpression":"none"},"python.autoComplete.extraPaths":["${workspaceFolder}/Scripts","${workspaceFolder}/Scripts/Biped","${workspaceFolder}/Scripts/Combos","${workspaceFolder}/Lib","${workspaceFolder}/Lib/AnmSets","${workspaceFolder}/Lib/Widgets","${workspaceFolder}/Lib/PythonLib","${workspaceFolder}/Lib/PythonLib/lib-tk","${workspaceFolder}/Lib/PythonLib/DLLs","~/AppData/Local/Programs/Python/Python39/Lib/site-packages/Bladex/__ext__"],"python.analysis.extraPaths":["${workspaceFolder}/Scripts","${workspaceFolder}/Scripts/Biped","${workspaceFolder}/Scripts/Combos","${workspaceFolder}/Lib","${workspaceFolder}/Lib/AnmSets","${workspaceFolder}/Lib/Widgets","${workspaceFolder}/Lib/PythonLib","${workspaceFolder}/Lib/PythonLib/lib-tk","${workspaceFolder}/Lib/PythonLib/DLLs","~/AppData/Local/Programs/Python/Python39/Lib/site-packages/Bladex/__ext__"]}]]></content>
+  </entry>
+  <entry>
+    <title>categories</title>
+    <url>/categories/index.html</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
+    <title></title>
+    <url>/downloads/code/tasks.json</url>
+    <content><![CDATA[{"version":"2.0.0","tasks":[{"label":"Run autopep8 for Blade","type":"shell","command":"autopep8","args":["${file}","-i"],"group":{"kind":"build","isDefault":true},"problemMatcher":[]}]}]]></content>
+  </entry>
+  <entry>
+    <title>Archives</title>
+    <url>/zh-CN/archives/index.html</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
+    <title>categories</title>
+    <url>/zh-CN/categories/index.html</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
+    <title>Tags</title>
+    <url>/zh-CN/tags/index.html</url>
+    <content><![CDATA[]]></content>
+  </entry>
+</search>
