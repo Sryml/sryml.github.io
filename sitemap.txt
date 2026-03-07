@@ -1,0 +1,16 @@
+http://sryml.github.io/zh-CN/categories/index.html
+http://sryml.github.io/zh-CN/archives/index.html
+http://sryml.github.io/zh-CN/tags/index.html
+http://sryml.github.io/tags/index.html
+http://sryml.github.io/downloads/code/settings.json
+http://sryml.github.io/downloads/code/tasks.json
+http://sryml.github.io/categories/index.html
+http://sryml.github.io/BVM/
+http://sryml.github.io/zh-CN/BVM/
+http://sryml.github.io/
+http://sryml.github.io/categories/%F0%9F%87%BA%F0%9F%87%B8-English/
+http://sryml.github.io/categories/%F0%9F%87%A8%F0%9F%87%B3-%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87/
+http://sryml.github.io/categories/%F0%9F%87%BA%F0%9F%87%B8-English/Blade/
+http://sryml.github.io/categories/%F0%9F%87%A8%F0%9F%87%B3-%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87/Blade/
+http://sryml.github.io/categories/%F0%9F%87%BA%F0%9F%87%B8-English/Game-MOD/
+http://sryml.github.io/categories/%F0%9F%87%A8%F0%9F%87%B3-%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87/Game-MOD/
